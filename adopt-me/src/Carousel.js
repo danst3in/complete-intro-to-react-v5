@@ -18,6 +18,14 @@ class Carousel extends Component {
     return { photos };
   }
 
+  // can use an arrow function here because we are using the inherited context to keep "this" from the Class component
+  // this is an alternative to not using an arrow function and requiring a "function bind" in the class constructor
+  handleIndexClick = (event) => {
+    this.setState({
+      active: +event.target.dataset.index,
+    });
+  };
+
   render() {
     const { photos, active } = this.state;
     return (
