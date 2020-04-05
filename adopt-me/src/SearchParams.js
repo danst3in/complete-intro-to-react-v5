@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
-import Results from './Results'
+import Results from "./Results";
 import useDropdown from "./useDropdown";
 
 const SearchParams = () => {
@@ -17,7 +17,7 @@ const SearchParams = () => {
       type: animal,
     });
 
-    setPets(animals || []);
+    usePets(animals || []);
   }
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const SearchParams = () => {
     <div className="search-params">
       <h1>{location}</h1>
       <form
-        onSumbit={(e) => {
+        onSubmit={(e) => {
           e.preventDefault();
           requestPets();
         }}
@@ -56,7 +56,7 @@ const SearchParams = () => {
         <BreedDropdown />
         <button>Submit</button>
       </form>
-      <Results pets={pets}
+      <Results pets={pets} />
     </div>
   );
 };
