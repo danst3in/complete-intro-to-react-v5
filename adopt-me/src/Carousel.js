@@ -28,6 +28,7 @@ class Carousel extends Component {
 
   render() {
     const { photos, active } = this.state;
+
     return (
       <div className="carousel">
         <img src={photos[active]} alt="animal" />
