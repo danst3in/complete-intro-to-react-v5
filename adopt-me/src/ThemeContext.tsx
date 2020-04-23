@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 // placing a hook inside this function
 const ThemeContext = createContext<[string, (theme: string) => void]>([
