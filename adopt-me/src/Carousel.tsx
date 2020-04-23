@@ -1,4 +1,14 @@
 import React, { Component } from "react";
+import { Photo } from "@frontendmasters/pet";
+
+interface IProps {
+  media: Photo[];
+}
+
+interface IState {
+  active: number;
+  photos: string[];
+}
 
 class Carousel extends Component {
   state = {
@@ -7,7 +17,7 @@ class Carousel extends Component {
   };
 
   // this function takes in a set of props, filters them, passes them on to the component as updated state
-  static getDerivedStateFromProps({ media }) {
+  public static getDerivedStateFromProps({ media }: IProps) {
     let photos = ["http://placecorgi.com/600/600"];
 
     if (media.length) {
@@ -20,13 +30,18 @@ class Carousel extends Component {
 
   // can use an arrow function here because we are using the inherited context to keep "this" from the Class component
   // this is an alternative to not using an arrow function and requiring a "function bind" in the class constructor
-  handleIndexClick = (event) => {
-    this.setState({
-      active: +event.target.dataset.index,
-    });
+  public handleIndexClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (!(event.target instanceof HTMLElement)) {
+      return;
+    }
+    if (event.target.dataset.index) {
+      this.setState({
+        active: +event.target.dataset.index,
+      });
+    }
   };
 
-  render() {
+  public render() {
     const { photos, active } = this.state;
 
     return (
