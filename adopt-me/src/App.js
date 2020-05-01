@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { render } from "react-dom";
+// import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
@@ -23,4 +23,7 @@ const App = () => {
     </React.StrictMode>
   );
 };
-render(<App />, document.getElementById("root"));
+
+// render(<App />, document.getElementById("root")); disabled for server side rendering
+
+export default App; // allows this file to be imported in node and rendered there for SSR
